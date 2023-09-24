@@ -14,3 +14,4 @@ bleach~=6.0.0
 itsdangerous~=2.1.2
 python-dotenv~=0.21.1
 email-validator==2.0.0.post2
+Flask-Mail==0.9.1

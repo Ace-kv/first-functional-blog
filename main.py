@@ -17,12 +17,12 @@ from itsdangerous import URLSafeTimedSerializer as Serializer
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 
-load_dotenv("D:/Python/EnvVars/.env.txt")
+load_dotenv()
 
 
 '''
 Make sure the required packages are installed: 
-Open the Terminal in PyCharm (bottom left). 
+Open the Terminal 
 
 On Windows type:
 python -m pip install -r requirements.txt
@@ -52,7 +52,7 @@ gravatar = Gravatar(app,
                     base_url=None)
 
 # CONNECT TO DB
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///posts.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI", "sqlite:///posts.db")
 # app.config['SQLALCHEMY_BINDS'] = {'users': 'sqlite:///blog.db'} ## for connecting a separate database(s)
 db = SQLAlchemy()
 db.init_app(app)
@@ -348,4 +348,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
